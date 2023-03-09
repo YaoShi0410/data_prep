@@ -2,7 +2,7 @@
 Some scripts for process raw data and prepare data for tomography and seismicity studies.
 
 ## 0_raw_data
-Select bad data and merge and cut.
+Select bad data and cut data into specific length.
 
 ## 1_data_download
 Download waveform data and catalog data, you can set specific parameters.
