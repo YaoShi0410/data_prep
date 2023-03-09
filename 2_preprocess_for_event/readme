@@ -1,0 +1,81 @@
+################# scripts ######################
+1_copy_data.py 
+Copy data matching the event from disk of raw data to waveform_data.
+
+(1)the format of waveform_path: 
+./waveform_data/sta_eventtime(yyyymmddhhmmssmmm, )_mag_chn.format
+
+2_ch_header.py
+Change the header information of the  raw waveform.
+
+(1)modify referrence time to event_time, remember to modify the 'b'.(b = start_time - event_time)
+(2)add the event info.(evlo, evla, evdp, mag, o(omarker)=0)
+(3)add the station info.(stlo, stla, stel(m), knetwk, kstnm, kcmpnm, cmpaz, cmpinc)
+
+3_cut_events_cal.py
+Cut waveforms by the information of event using calculated time(taup).
+
+(1)the format of out path:
+./events_data_p(time_before_p)+s(time_after_s)_0.1-1hz/eqtnum_mag/sta_eventtime(yyyymmddhhmmssmmm, )_mag_chn.format
+(2)cut the events(eg. 5s before p and 15s after s)
+(3)write the p_arrival and s_arrival to head(user9, user8)
+
+5_cut_events_precise.py
+Cut events in a precise window to show the clear waveforms.
+
+6_phase_pick&select.py
+Pick phase arrivals and select good waveforms.
+write the picked p_arrival and s_arrival to head(user7, user6)
+
+plot_waveform_list
+plot a list of waveforms
+
+plot_waveform_single
+plot a single waveform
+
+################# functions ######################
+cut.py
+Cut the event.
+
+time_convert.py 
+Convert the UTC time to str and int.
+
+head.py
+Change the header info of the waveform.
+
+plot_waveform.py
+Plot waveform using matplotlib.
+(1)plot single waveform
+(2)plot a list of waveforms
+
+
+################## input ########################
+catalog.dat
+Information for events.
+
+sta_info.txt
+Information for stations.
+
+################## output ########################
+phase:
+picked phase arrivals
+
+data_dail.dat:
+the waveform list with not enough length to cut
+
+
+################## data ########################
+
+waveform_data
+Save the raw waveform data
+
+events_data_cal
+Cuted waveforms by the information of event using estimated time
+
+events_data_picked
+Selected waveforms which have picked p and s.
+
+
+
+################## figures #######################
+
